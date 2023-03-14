@@ -10,17 +10,17 @@ DROP TABLE IF EXISTS country;
 
 CREATE TABLE country(
 	country_id integer GENERATED ALWAYS AS IDENTITY,
-    country_name text UNIQUE NOT NULL,
+	country_name text UNIQUE NOT NULL,
 	
 	CONSTRAINT pk_country PRIMARY KEY (country_id)
 );
 
 CREATE TABLE person(
 	person_id bigint GENERATED ALWAYS AS IDENTITY,
-    first_name text NOT NULL,
-    last_name text NOT NULL,
-    birthday date,
-    birth_country_id integer, 
+	first_name text NOT NULL,
+	last_name text NOT NULL,
+	birthday date,
+	birth_country_id integer, 
 	
 	CONSTRAINT pk_person PRIMARY KEY (person_id),
 	CONSTRAINT fk_person_country FOREIGN KEY (birth_country_id) REFERENCES country (country_id)
@@ -28,32 +28,32 @@ CREATE TABLE person(
 
 CREATE TABLE genre(
 	genre_id bigint GENERATED ALWAYS AS IDENTITY,
-    genre_name text UNIQUE NOT NULL,
+	genre_name text UNIQUE NOT NULL,
 	
 	CONSTRAINT pk_genre PRIMARY KEY (genre_id)
 );
 
 CREATE TABLE film
 (
-    film_id bigint GENERATED ALWAYS AS IDENTITY,
-    title text NOT NULL,
-    release_year integer NOT NULL,
-    country_id integer NOT NULL,
-    slogan text,
+	film_id bigint GENERATED ALWAYS AS IDENTITY,
+	title text NOT NULL,
+	release_year integer NOT NULL,
+	country_id integer NOT NULL,
+	slogan text,
 	budget integer,
-    marketing integer,
-    box_office integer,
+	marketing integer,
+	box_office integer,
 	world_premiere_date date NOT NULL,
-    age_restriction integer NOT NULL,
-    duration integer NOT NULL,
+	age_restriction integer NOT NULL,
+	duration integer NOT NULL,
 	
-    director_id bigint,
-    scenario_id bigint,
-    producer_id bigint,
-    operator_id bigint,
-    composer_id bigint,
-    artist_id bigint,
-    montage_id bigint,
+	director_id bigint,
+	scenario_id bigint,
+	producer_id bigint,
+	operator_id bigint,
+	composer_id bigint,
+	artist_id bigint,
+	montage_id bigint,
 	
 	CONSTRAINT pk_film PRIMARY KEY (film_id),
 	CONSTRAINT fk_film_country FOREIGN KEY (country_id) REFERENCES country (country_id),
@@ -69,7 +69,7 @@ CREATE TABLE film
 CREATE TABLE audience(
 	audience_id bigint GENERATED ALWAYS AS IDENTITY,
 	film_id bigint NOT NULL,
-    premiere_date date NOT NULL,
+	premiere_date date NOT NULL,
 	country_id integer NOT NULL,
 	number_people integer,
 	
